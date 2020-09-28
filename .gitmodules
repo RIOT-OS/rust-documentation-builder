@@ -1,0 +1,3 @@
+[submodule "documentation-headers"]
+	path = documentation-headers
+	url = https://github.com/riot-os/riot

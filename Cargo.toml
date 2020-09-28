@@ -1,0 +1,12 @@
+[package]
+name = "riot-doc-helpers"
+version = "0.1.0"
+authors = ["chrysn <chrysn@fsfe.org>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+riot-sys = { git = "https://gitlab.com/etonomy/riot-sys/" }
+riot-wrappers= { git = "https://gitlab.com/etonomy/riot-wrappers/" }
+riot-shell-commands = { git = "https://gitlab.com/etonomy/riot-examples/", features = ["saul"] }
