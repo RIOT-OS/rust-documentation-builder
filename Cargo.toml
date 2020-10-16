@@ -6,6 +6,7 @@ edition = "2018"
 publish = false
 
 repository = "https://gitlab.com/etonomy/riot-sys"
+documentation = "https://rustdoc.etonomy.org/riot_doc_helpers/"
 license = "LGPL-2.1"
 
 [dependencies]
