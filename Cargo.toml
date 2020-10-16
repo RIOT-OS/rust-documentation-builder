@@ -12,4 +12,4 @@ license = "LGPL-2.1"
 [dependencies]
 riot-sys = { git = "https://gitlab.com/etonomy/riot-sys/" }
 riot-wrappers= { git = "https://gitlab.com/etonomy/riot-wrappers/" }
-riot-shell-commands = { git = "https://gitlab.com/etonomy/riot-examples/", features = ["saul"] }
+riot-shell-commands = { git = "https://gitlab.com/etonomy/riot-examples/", features = ["saul", "ztimer"] }
