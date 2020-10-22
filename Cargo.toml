@@ -10,6 +10,11 @@ documentation = "https://rustdoc.etonomy.org/riot_doc_helpers/"
 license = "LGPL-2.1"
 
 [dependencies]
+riot-sys = "*"
+riot-wrappers = "*"
+riot-shell-commands = "*"
+
+[patch.crates-io]
 riot-sys = { git = "https://gitlab.com/etonomy/riot-sys/" }
 riot-wrappers= { git = "https://gitlab.com/etonomy/riot-wrappers/" }
 riot-shell-commands = { git = "https://gitlab.com/etonomy/riot-examples/", features = ["saul", "ztimer"] }
