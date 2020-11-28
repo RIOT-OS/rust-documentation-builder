@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export DOCUMENTATION_HEADERS="${PWD}/documentation-headers"
+export DOCUMENTATION_HEADERS="${PWD}/RIOT"
 
 export RIOT_CC="gcc"
 # Currently from a run of the shell example, with just the -I paths replaced, and the riotbuild.h header removed
