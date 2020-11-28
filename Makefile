@@ -15,6 +15,10 @@ USEMODULE += saul_default
 USEMODULE += ztimer_usec
 USEMODULE += ztimer_msec
 USEMODULE += bluetil_ad
+FEATURES_REQUIRED += periph_adc
+FEATURES_REQUIRED += periph_i2c
+FEATURES_REQUIRED += periph_spi
+FEATURES_REQUIRED += periph_gpio
 
 USEPKG += nimble
 
