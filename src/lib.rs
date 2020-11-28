@@ -19,7 +19,7 @@
 //!
 //! The trouble with RIOT crates is that they are practically used with a RIOT checkout present,
 //! and even are called from inside RIOT's build system. Thus, any crate that wants documentation
-//! built in the general way (at https://docs.rs/) would need special casing in its build system,
+//! built in the general way (at <https://docs.rs/>) would need special casing in its build system,
 //! and ship some parts of RIOT to even build the riot-sys crate it depends on. Furthermore, that
 //! build process also includes having `c2rust` installed locally, which in term requires a
 //! particular nightly toolchain.
