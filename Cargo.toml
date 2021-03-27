@@ -9,9 +9,11 @@ repository = "https://gitlab.com/etonomy/riot-sys"
 documentation = "https://rustdoc.etonomy.org/riot_doc_helpers/"
 license = "LGPL-2.1"
 
+resolver = "2"
+
 [dependencies]
 riot-sys = "*"
-riot-wrappers = "*"
+riot-wrappers = { version = "*", features = [ "with_coap_handler", "with_embedded_nal" ] }
 riot-shell-commands = "*"
 
 [patch.crates-io]

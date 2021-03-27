@@ -8,6 +8,9 @@ CARGO_TARGET = thumbv7em-none-eabihf
 TOOLCHAIN = llvm
 DEVELHELP = 1
 
+USEMODULE += gnrc
+USEMODULE += gnrc_ipv6
+USEMODULE += gcoap
 USEMODULE += shell
 USEMODULE += shell_commands
 USEMODULE += ps
@@ -15,6 +18,7 @@ USEMODULE += saul_default
 USEMODULE += ztimer_usec
 USEMODULE += ztimer_msec
 USEMODULE += bluetil_ad
+USEMODULE += suit_transport_coap
 FEATURES_REQUIRED += periph_adc
 FEATURES_REQUIRED += periph_i2c
 FEATURES_REQUIRED += periph_spi
