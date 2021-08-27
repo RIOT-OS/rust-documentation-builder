@@ -12,7 +12,8 @@
 //! * [riot-sys](riot_sys), which maps the raw RIOT functions to unsafe Rust equivalents
 //! * [riot-wrappers](riot_wrappers), which cretes safe idiomatic Rust wrappers around the above,
 //!   and implements interoperability traits on them
-//! * [riot-shell-commands](riot_shell_commands), which is a library of the
+//! * [riot-shell-commands](riot_shell_commands) and
+//!   [riot-coap-handler-demos](riot_coap_handler_demos), which are libraries used in the
 //!   [examples](https://gitlab.com/etonomy/riot-examples/) collection
 //!
 //! ---
