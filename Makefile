@@ -38,6 +38,6 @@ build-cargo-docs: pkg-prepare $(BUILDDEPS)
 	CC= CFLAGS= CPPFLAGS= RIOT_CC="${CC}" RIOT_CFLAGS="$(CFLAGS_WITH_MACROS) $(INCLUDES)" cargo +nightly doc --target $(CARGO_TARGET)
 
 upload:
-	rsync -vaP --delete ./target/thumbv7em-none-eabihf/doc/* prometheus:sites/rustdoc.etonomy.org/
+	rsync -vaP --delete bin/${BOARD}/target/${RUST_TARGET}/doc/* prometheus:sites/rustdoc.etonomy.org/
 
 .PHONY: rustdoc-all build-cargo-docs upload
