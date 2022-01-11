@@ -18,6 +18,7 @@ USEMODULE += saul_default
 USEMODULE += ztimer_usec
 USEMODULE += ztimer_msec
 USEMODULE += ztimer_sec
+USEMODULE += ztimer_periodic
 USEMODULE += bluetil_ad
 USEMODULE += suit_transport_coap
 FEATURES_REQUIRED += periph_adc
