@@ -13,7 +13,7 @@ resolver = "2"
 
 [dependencies]
 riot-sys = "*"
-riot-wrappers = { version = "*", features = [ "with_coap_handler", "with_embedded_nal", "with_msg_v2" ] }
+riot-wrappers = { version = "*", features = [ "with_coap_handler", "with_embedded_nal", "with_msg_v2", "actual_never_type" ] }
 riot-shell-commands = { git = "https://gitlab.com/etonomy/riot-module-examples/", features = ["saul", "ztimer"] }
 riot-coap-handler-demos = { git = "https://gitlab.com/etonomy/riot-module-examples/" }
 
