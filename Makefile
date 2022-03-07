@@ -35,6 +35,9 @@ include $(RIOTBASE)/Makefile.include
 
 rustdoc-all: build-cargo-docs upload
 
+test:
+	CC= CFLAGS= CPPFLAGS= RIOT_CC="${CC}" RIOT_CFLAGS="$(CFLAGS_WITH_MACROS) $(INCLUDES)" cargo +nightly test --target $(CARGO_TARGET) --doc --package riot-wrappers -Z doctest-xcompile
+
 build-cargo-docs: pkg-prepare $(BUILDDEPS)
 	CC= CFLAGS= CPPFLAGS= RIOT_CC="${CC}" RIOT_CFLAGS="$(CFLAGS_WITH_MACROS) $(INCLUDES)" cargo +nightly doc --target $(CARGO_TARGET)
 
