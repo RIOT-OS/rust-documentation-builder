@@ -41,10 +41,10 @@ include $(RIOTBASE)/Makefile.include
 rustdoc-all: build-cargo-docs upload
 
 test:
-	CC= CFLAGS= CPPFLAGS= RIOT_CC="${CC}" RIOT_CFLAGS="$(CFLAGS_WITH_MACROS) $(INCLUDES)" cargo +nightly test --target $(CARGO_TARGET) --doc --package riot-wrappers -Z doctest-xcompile
+	$(MAKE) cargo-command CARGO_COMMAND="cargo test --doc --package riot-wrappers -Z doctest-xcompile"
 
-build-cargo-docs: pkg-prepare $(BUILDDEPS)
-	CC= CFLAGS= CPPFLAGS= RIOT_CC="${CC}" RIOT_CFLAGS="$(CFLAGS_WITH_MACROS) $(INCLUDES)" cargo +nightly doc --target $(CARGO_TARGET)
+build-cargo-docs:
+	$(MAKE) cargo-command CARGO_COMMAND="cargo doc -Z unstable-options -Z rustdoc-scrape-examples"
 
 upload:
 	rsync -vaP --delete bin/${BOARD}/target/${RUST_TARGET}/doc/* prometheus:sites/rustdoc.etonomy.org/
