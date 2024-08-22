@@ -40,7 +40,7 @@ include $(RIOTBASE)/Makefile.include
 
 rustdoc-all: build-cargo-docs upload
 
-test:
+build-cargo-tests:
 	$(MAKE) cargo-command CARGO_COMMAND="cargo test --doc --package riot-wrappers -Z doctest-xcompile"
 
 build-cargo-docs:
