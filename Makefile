@@ -43,8 +43,16 @@ rustdoc-all: build-cargo-docs upload
 build-cargo-tests:
 	$(MAKE) cargo-command CARGO_COMMAND="cargo test --doc --package riot-wrappers -Z doctest-xcompile"
 
+run-cargo-check:
+	$(MAKE) cargo-command CARGO_COMMAND="cargo check"
+
 build-cargo-docs:
 	$(MAKE) cargo-command CARGO_COMMAND="cargo doc -Z unstable-options -Z rustdoc-scrape-examples"
+
+build-json-docs:
+	# Experimental.
+	# Might be neat to get the doc(alias) data out and use it to augment the RIOT docs.
+	$(MAKE) cargo-command CARGO_COMMAND="cargo doc -Z unstable-options -Z rustdoc-scrape-examples --output-format=json"
 
 upload:
 	rsync -vaP --delete bin/${BOARD}/target/${RUST_TARGET}/doc/* prometheus:sites/rustdoc.etonomy.org/
