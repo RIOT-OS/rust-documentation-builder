@@ -1,0 +1,9 @@
+[target.'cfg(all())']
+
+## `cargo test` with `-Z doctest-xcompile` does not support `--no-run` -- but
+## that's exactly what we need, a tool that builds all the doc tests (and
+## whether they actually succeed at run time is a way harder story anyway as it
+## will always depend on the board).
+##
+## This is a documentation build helper, it doesn't need a runner.
+runner = "true"
