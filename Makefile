@@ -8,6 +8,9 @@ CARGO_TARGET = thumbv7em-none-eabihf
 TOOLCHAIN = llvm
 DEVELHELP = 1
 
+# Compared to modules known to riot-wrappers, this is missing microbit,
+# periph_dac and pthread. Ideally we'd have all modules in, but building
+# documentation requires the underlying steps to build successfully.
 USEMODULE += gnrc
 USEMODULE += gnrc_ipv6
 USEMODULE += gcoap
@@ -26,6 +29,7 @@ USEMODULE += sock_udp
 USEMODULE += sock_async
 USEMODULE += core_thread_flags
 USEMODULE += vfs
+USEMODULE += prng_sha256prng
 FEATURES_REQUIRED += periph_adc
 FEATURES_REQUIRED += periph_i2c
 FEATURES_REQUIRED += periph_spi
