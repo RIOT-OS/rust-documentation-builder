@@ -38,6 +38,11 @@ include $(RIOTBASE)/Makefile.include
 
 .DEFAULT_GOAL := rustdoc-all
 
+# This causes full slow rebuilds of riot-sys. This is a workaround -- the
+# proper fix is probably to start opting in to -D flags and to not go through
+# compile_commands.
+export RIOT_CHACHA_PRNG_DEFAULT = 0x0
+
 rustdoc-all: build-cargo-docs upload
 
 build-cargo-tests:
