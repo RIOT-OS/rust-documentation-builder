@@ -4,7 +4,6 @@ RIOTBASE = ./RIOT
 APPLICATION = documentation
 # pick one on which all the required modules can actually be enabled
 BOARD = nrf52840dongle
-CARGO_TARGET = thumbv7em-none-eabihf
 TOOLCHAIN = llvm
 DEVELHELP = 1
 
