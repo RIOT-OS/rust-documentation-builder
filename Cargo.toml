@@ -18,5 +18,5 @@ riot-shell-commands = { git = "https://gitlab.com/etonomy/riot-module-examples/"
 riot-coap-handler-demos = { git = "https://gitlab.com/etonomy/riot-module-examples/", features = [ "vfs", "saul", "i2c", "gpio", "ping" ] }
 
 [patch.crates-io]
-riot-sys = { git = "https://gitlab.com/etonomy/riot-sys/" }
-riot-wrappers= { git = "https://gitlab.com/etonomy/riot-wrappers/" }
+riot-sys = { git = "https://github.com/RIOT-OS/rust-riot-wrappers/" }
+riot-wrappers = { git = "https://github.com/RIOT-OS/rust-riot-wrappers/" }
