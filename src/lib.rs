@@ -22,3 +22,5 @@
 //!   * [embassy-executor-riot](embassy_executor_riot) provides an executor for asynchronous
 //!     functions based on Embassy.
 #![no_std]
+
+extern crate rust_riotmodules;

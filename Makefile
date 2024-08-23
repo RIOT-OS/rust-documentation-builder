@@ -1,3 +1,6 @@
+# This needs to be constant so that rust_riotmodules can be pulled in
+RIOTBASE = ./RIOT
+
 # just to make the build tools happy
 APPLICATION = documentation
 # pick one on which all the required modules can actually be enabled
