@@ -66,17 +66,4 @@ build-json-docs:
 upload:
 	rsync -vaP --delete bin/${BOARD}/target/${RUST_TARGET}/doc/* prometheus:sites/rustdoc.etonomy.org/
 
-RIOT_REPO ?= https://github.com/RIOT-OS/RIOT
-RIOT_BRANCH ?= master
-
-# This might become the main target eventually. This command is designed to be
-# run in a fresh checkout, and creates checkouts and/or config files locally on
-# demand.
-build-from-checkout:
-	git clone "${RIOT_REPO}" -b "${RIOT_BRANCH}"
-	# TBD: Like RIOT_BRANCH, allow overiding repos / branches for other
-	# repositories and create patches for those.
-	cargo update
-	$(MAKE) build-cargo-docs
-
 .PHONY: rustdoc-all build-cargo-docs upload
