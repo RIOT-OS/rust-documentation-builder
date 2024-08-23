@@ -65,7 +65,4 @@ build-json-docs:
 	# Might be neat to get the doc(alias) data out and use it to augment the RIOT docs.
 	$(MAKE) cargo-command CARGO_COMMAND="cargo doc -Z unstable-options -Z rustdoc-scrape-examples --output-format=json"
 
-upload:
-	rsync -vaP --delete bin/${BOARD}/target/${RUST_TARGET}/doc/* prometheus:sites/rustdoc.etonomy.org/
-
 .PHONY: rustdoc-all build-cargo-docs upload

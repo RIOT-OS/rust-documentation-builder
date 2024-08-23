@@ -1,0 +1,41 @@
+name: build
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+    container: riot/riotbuild
+    steps:
+      - name: Check out rust-documentation-builder
+        uses: actions/checkout@v4
+      - name: Run `make build-from-checkout`
+        # Note that this runs the RIOT checkout internally, both to reduce
+        # dependencies on GitHub actions and to gain the flexibility on running
+        # with different sources with the same ease locally and in CI.
+        run: |
+          sh ./build-with-checkouts.sh
+      # We might use artifacts in other situations, but right now we only care
+      # about uploading. Could be useful for pull requests, but this would best
+      # work with HTML being served from the artifact.
+      #
+      # - name: Create artifact of built documentation
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: rustdoc
+      #     path: bin/nrf52840dongle/target/thumbv7em-none-eabihf/doc/
+      - name: Upload generated documentation
+        env:
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          SECRET_PORT: ${{ secrets.SECRET_PORT }}
+        run: |
+          # Beware that SSH uses /root and not ~ = ${HOME} = /github/home/ as
+          # documented on https://bugzilla.mindrot.org/show_bug.cgi?id=3048
+          mkdir /root/.ssh -m 0700
+          echo "[tatooine.riot-os.org]:${SECRET_PORT} ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHvjwPa7KJNZS47cHXaMrxRcDj1a/2VEFtp041ZOSY2L" > /root/.ssh/known_hosts
+          echo "${SECRET_KEY}" > /root/.ssh/id_ed25519
+          chmod go-rwx /root/.ssh/id_ed25519
+          # Our key has rrsync as its command, so what is given as / is actually /var/www/doc.riot-os.org_rustdoc/latest/
+          rsync -e "ssh -p${SECRET_PORT}" -vaP --delete bin/nrf52840dongle/target/thumbv7em-none-eabihf/doc/* ghdeploy@tatooine.riot-os.org:/
