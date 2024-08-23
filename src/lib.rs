@@ -1,26 +1,24 @@
-//! # RIOT documentation helper
+//! <!-- This documentation serves as the entry point of the produced documentation. For the why
+//! and how of this crate, see
+//! https://github.com/RIOT-OS/rust-documentation-builder/blob/main/README.md -->
 //!
-//! This crate contains neither actual code or documentation, but its build infrastructure is
-//! suitable to produce rustdoc output for all crates in the RIOT ecosystem.
+//! # RIOT Rust documentation
 //!
-//! See the [RIOT documentation on Rust](https://doc.riot-os.org/using-rust.html) for how to use Rust on RIOT.
-//! That page contains pointers to all the relevant components.
+//! This is the entry point for the documentation of Rust functions for RIOT as built by rustdoc.
 //!
-//! # Rationale for this repository's existence
+//! For how to use Rust on RIOT in general, see the [RIOT documentation on
+//! Rust](https://doc.riot-os.org/using-rust.html).
 //!
-//! All documented crates depend on `riot-sys` crate, at least transitively -- and that crate
-//! requires
+//! Relevant crates are:
 //!
-//! * a RIOT checkout,
-//! * environment configuration as provided by `make info-rust`, and
-//! * C2Rust to be installed.
-//!
-//! As those can not be provided on <https://docs.rs/>, documentation needs to be built using a
-//! more manual process, and this repository sets it up.
-//!
-//! Parts of `riot-wrappers` depend on concrete RIOT modules to be enabled as part of their
-//! environment configuration. This repository's Makefile picks a board and modules to maximize the
-//! coverage -- at least until a way is found to build `riot-sys` with some maximal configuration.
-//! (Which documented items depend on which modules is documented in the produced HTML thanks to
-//! the [`doc_auto_cfg` feature](https://github.com/rust-lang/rust/issues/43781)).
+//! * [riot-wrappers](riot_wrappers) creates safe idiomatic Rust wrappers for everyday use.
+//! * [riot-sys](riot_sys) maps the raw RIOT functions to unsafe Rust equivalents from bindgen.
+//! * Several [riot-module-examples](https://gitlab.com/etonomy/riot-module-examples/) are a mix of
+//!   actual example code and convenient tools:
+//!   * [riot-shell-commands](riot_shell_commands) implements the `sleep`, `ps` and other shell
+//!     commands in Rust.
+//!   * [riot-coap-handler-demos](riot_coap_handler_demos) implements the `ps` but also file system
+//!     access and SAUL access over CoAP.
+//!   * [embassy-executor-riot](embassy_executor_riot) provides an executor for asynchronous
+//!     functions based on Embassy.
 #![no_std]
