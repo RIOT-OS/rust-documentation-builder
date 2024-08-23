@@ -3,6 +3,10 @@ name: build
 on:
   push:
     branches: ["main"]
+  schedule:
+    # While we don't have hooks triggering this from riot-sys etc, a cron job
+    # is the next best thing
+    - cron: '0 4 * * *'
 
 jobs:
   build-docs:
