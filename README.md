@@ -5,32 +5,25 @@
 This crate contains neither actual code or documentation, but its build infrastructure is
 suitable to produce rustdoc output for all crates in the RIOT ecosystem.
 
-If you are new to Rust on RIOT, your best starting point are [the
-examples](https://gitlab.com/etonomy/riot-examples/), which also contain any setup instructions
-you may need.
+See the [RIOT documentation on Rust](https://doc.riot-os.org/using-rust.html) for how to use Rust on RIOT.
+That page contains pointers to all the relevant components.
 
-If you are looking for documentation on individual crates, you may want to see:
+## Rationale for this repository's existence
 
-* [riot-sys](riot_sys), which maps the raw RIOT functions to unsafe Rust equivalents
-* [riot-wrappers](riot_wrappers), which cretes safe idiomatic Rust wrappers around the above,
-  and implements interoperability traits on them
-* [riot-shell-commands](riot_shell_commands), which is a library of the
-  [examples](https://gitlab.com/etonomy/riot-examples/) collection
+All documented crates depend on `riot-sys` crate, at least transitively -- and that crate
+requires
 
----
+* a RIOT checkout,
+* environment configuration as provided by `make info-rust`, and
+* C2Rust to be installed.
 
-The trouble with RIOT crates is that they are practically used with a RIOT checkout present,
-and even are called from inside RIOT's build system. Thus, any crate that wants documentation
-built in the general way (at https://docs.rs/) would need special casing in its build system,
-and ship some parts of RIOT to even build the riot-sys crate it depends on. Furthermore, that
-build process also includes having `c2rust` installed locally, which in term requires a
-particular nightly toolchain.
+As those can not be provided on <https://docs.rs/>, documentation needs to be built using a
+more manual process, and this repository sets it up.
 
-A related issue is that both riot-sys and riot-bindgen have parts of their code not conditional
-on cargo-enabled features, but on the capabilities ("modules" and "provides") of the RIOT
-application and board. (That mechanism may change in future, but even if the conditional parts
-were enabled using features, builds would fail when the code parts lack their implementation's
-bindgen and C2Rust generated backing functions). Thus, this crate makes up a board setup that
-makes all of riot-wrappers' features available.
+Parts of `riot-wrappers` depend on concrete RIOT modules to be enabled as part of their
+environment configuration. This repository's Makefile picks a board and modules to maximize the
+coverage -- at least until a way is found to build `riot-sys` with some maximal configuration.
+(Which documented items depend on which modules is documented in the produced HTML thanks to
+the [`doc_auto_cfg` feature](https://github.com/rust-lang/rust/issues/43781)).
 
 License: LGPL-2.1
