@@ -19,7 +19,7 @@ riot-coap-handler-demos = { git = "https://gitlab.com/etonomy/riot-module-exampl
 embassy-executor-riot = { git = "https://gitlab.com/etonomy/riot-module-examples/" }
 
 # "_all" depends on lsm303agr and that requires a $BOARDDIR/include/lsm303agr-config.rs to be present, so doing a manual listing instead until I have a better idea
-rust_riotmodules = { path = "/home/chrysn/git/RIOT-projects/tempmain/sys/rust_riotmodules", features = [ "riot-module-shell-democommands" ] }
+rust_riotmodules = { path = "RIOT/sys/rust_riotmodules", features = [ "riot-module-shell-democommands" ] }
 
 [patch.crates-io]
 riot-sys = { git = "https://github.com/RIOT-OS/rust-riot-wrappers/" }
