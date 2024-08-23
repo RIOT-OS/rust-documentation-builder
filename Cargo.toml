@@ -22,5 +22,5 @@ embassy-executor-riot = { git = "https://gitlab.com/etonomy/riot-module-examples
 rust_riotmodules = { path = "RIOT/sys/rust_riotmodules", features = [ "riot-module-shell-democommands" ] }
 
 [patch.crates-io]
-riot-sys = { git = "https://github.com/RIOT-OS/rust-riot-wrappers/" }
+riot-sys = { git = "https://github.com/RIOT-OS/rust-riot-sys/" }
 riot-wrappers = { git = "https://github.com/RIOT-OS/rust-riot-wrappers/" }
