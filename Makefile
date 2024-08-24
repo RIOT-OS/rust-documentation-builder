@@ -59,6 +59,8 @@ build-cargo-docs:
 	$(MAKE) cargo-command CARGO_COMMAND="cargo doc -Z unstable-options -Z rustdoc-scrape-examples"
 	# Huge numbers of files that just make transfers take long
 	find bin/${BOARD}/target/${RUST_TARGET}/doc/riot_sys -name 'constant.RIOT_PP_*.html' -delete
+	# Also huge crates that we don't use directly
+	rm -rf bin/${BOARD}/target/${RUST_TARGET}/doc/{typenum,digest}
 
 build-json-docs:
 	# Experimental.
