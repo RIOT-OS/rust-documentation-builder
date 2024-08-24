@@ -41,5 +41,11 @@ jobs:
           echo "[tatooine.riot-os.org]:${SECRET_PORT} ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHvjwPa7KJNZS47cHXaMrxRcDj1a/2VEFtp041ZOSY2L" > /root/.ssh/known_hosts
           echo "${SECRET_KEY}" > /root/.ssh/id_ed25519
           chmod go-rwx /root/.ssh/id_ed25519
-          # Our key has rrsync as its command, so what is given as / is actually /var/www/doc.riot-os.org_rustdoc/latest/
-          rsync -e "ssh -p${SECRET_PORT}" -va --delete bin/nrf52840dongle/target/thumbv7em-none-eabihf/doc/* ghdeploy@tatooine.riot-os.org:/
+          # Our key has rrsync as its command, so what is given as / is
+          # actually /var/www/doc.riot-os.org_rustdoc/latest/
+          #
+          # Not doing full -a because we don't need -lpgoD, and don't want -t
+          # as to a) not needlessly modify metadata, and b) so that the file
+          # change information (admittedly not very accessible in most
+          # browsers) stays accurate.
+          rsync -e "ssh -p${SECRET_PORT}" -vr --delete bin/nrf52840dongle/target/thumbv7em-none-eabihf/doc/* ghdeploy@tatooine.riot-os.org:/
