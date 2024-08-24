@@ -21,15 +21,14 @@ jobs:
         # with different sources with the same ease locally and in CI.
         run: |
           sh ./build-with-checkouts.sh
-      # We might use artifacts in other situations, but right now we only care
-      # about uploading. Could be useful for pull requests, but this would best
-      # work with HTML being served from the artifact.
-      #
-      # - name: Create artifact of built documentation
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: rustdoc
-      #     path: bin/nrf52840dongle/target/thumbv7em-none-eabihf/doc/
+      # These are useful for debugging; viewing them will require some HTML access
+      - name: Create artifact of built documentation
+        uses: actions/upload-artifact@v4
+        with:
+          name: rustdoc
+          path: bin/nrf52840dongle/target/thumbv7em-none-eabihf/doc/
+          # Let's not overstay our quota
+          retention-days: 2
       - name: Upload generated documentation
         env:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
