@@ -56,4 +56,4 @@ jobs:
           # much help, as the files change all the time anyway -- still, at
           # least we don't change the time on a complete no-op rsync when
           # hopefully the hash is stable).
-          rsync -e "ssh -p${SECRET_PORT}" -vr --delete --delete-after bin/nrf52840dongle/target/thumbv7em-none-eabihf/doc/* ghdeploy@tatooine.riot-os.org:/
+          rsync -e "ssh -p${SECRET_PORT}" -r --delete --delete-after bin/nrf52840dongle/target/thumbv7em-none-eabihf/doc/* ghdeploy@tatooine.riot-os.org:/
