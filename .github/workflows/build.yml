@@ -48,4 +48,13 @@ jobs:
           # as to a) not needlessly modify metadata, and b) so that the file
           # change information (admittedly not very accessible in most
           # browsers) stays accurate.
-          rsync -e "ssh -p${SECRET_PORT}" -vr --delete bin/nrf52840dongle/target/thumbv7em-none-eabihf/doc/* ghdeploy@tatooine.riot-os.org:/
+          #
+          # --delete-after ensures that static.files/search-${SOMEHEX} remains
+          # accessible until the last file is refreshed -- otherwise, newer
+          # HTML files can get into an endless self-refresh loop during a
+          # transmission, or (worse) when an upload was aborted. (The presence
+          # of that hash sadly also means that the excluded `-t` above won't be
+          # much help, as the files change all the time anyway -- still, at
+          # least we don't change the time on a complete no-op rsync when
+          # hopefully the hash is stable).
+          rsync -e "ssh -p${SECRET_PORT}" -vr --delete --delete-after bin/nrf52840dongle/target/thumbv7em-none-eabihf/doc/* ghdeploy@tatooine.riot-os.org:/
