@@ -42,4 +42,4 @@ jobs:
           echo "${SECRET_KEY}" > /root/.ssh/id_ed25519
           chmod go-rwx /root/.ssh/id_ed25519
           # Our key has rrsync as its command, so what is given as / is actually /var/www/doc.riot-os.org_rustdoc/latest/
-          rsync -e "ssh -p${SECRET_PORT}" -vaP --delete bin/nrf52840dongle/target/thumbv7em-none-eabihf/doc/* ghdeploy@tatooine.riot-os.org:/
+          rsync -e "ssh -p${SECRET_PORT}" -va --delete bin/nrf52840dongle/target/thumbv7em-none-eabihf/doc/* ghdeploy@tatooine.riot-os.org:/
