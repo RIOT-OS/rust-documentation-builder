@@ -71,7 +71,8 @@ build-cargo-docs:
 	#   --extern-html-root-url embedded_hal=https://example.com/" and that
 	#   has no option to just send *everything* to docs.rs (well except for
 	#   embassy where we'd need to explicitly give embassy.dev URIs)
-	rm -rf bin/${BOARD}/target/${RUST_TARGET}/doc/{typenum,digest}
+	rm -r bin/${BOARD}/target/${RUST_TARGET}/doc/typenum \
+		bin/${BOARD}/target/${RUST_TARGET}/doc/digest
 
 build-json-docs:
 	# Experimental.
