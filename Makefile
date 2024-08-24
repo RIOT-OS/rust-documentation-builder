@@ -59,7 +59,18 @@ build-cargo-docs:
 	$(MAKE) cargo-command CARGO_COMMAND="cargo doc -Z unstable-options -Z rustdoc-scrape-examples"
 	# Huge numbers of files that just make transfers take long
 	find bin/${BOARD}/target/${RUST_TARGET}/doc/riot_sys -name 'constant.RIOT_PP_*.html' -delete
-	# Also huge crates that we don't use directly
+	# Remove some huge crates that we don't use directly
+	#
+	# The alternative would be to pass --no-deps and a lot of --package
+	# that we *do* care about to `cargo doc`, but that is impractical for
+	# two reasons:
+	#
+	# * It won't capture all the dependencies of rust_riotmodules (granted,
+	#   those are enumerated anyway in Cargo.toml until _all works)
+	# * We'd have to pass in RUSTDOCFLAGS="-Z unstable-options
+	#   --extern-html-root-url embedded_hal=https://example.com/" and that
+	#   has no option to just send *everything* to docs.rs (well except for
+	#   embassy where we'd need to explicitly give embassy.dev URIs)
 	rm -rf bin/${BOARD}/target/${RUST_TARGET}/doc/{typenum,digest}
 
 build-json-docs:
