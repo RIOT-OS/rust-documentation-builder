@@ -56,11 +56,21 @@ run-cargo-check:
 	$(MAKE) cargo-command CARGO_COMMAND="cargo check"
 
 build-cargo-docs:
+	# Even with dependencies documented, private items are only documented
+	# in explicitly listed packages
 	$(MAKE) \
 		cargo-command \
 		CARGO_COMMAND="cargo doc \
 			-Z unstable-options \
 			-Z rustdoc-scrape-examples \
+			--document-private-items \
+			--package riot-doc-helpers \
+			--package riot-sys \
+			--package riot-wrappers \
+			--package riot-shell-commands \
+			--package riot-coap-handler-demos \
+			--package embassy-executor-riot \
+			--package rust-riotmodules \
 			"
 	# Huge numbers of files that just make transfers take long
 	find bin/${BOARD}/target/${RUST_TARGET}/doc/riot_sys -name 'constant.RIOT_PP_*.html' -delete
