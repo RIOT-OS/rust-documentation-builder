@@ -56,8 +56,9 @@ run-cargo-check:
 	$(MAKE) cargo-command CARGO_COMMAND="cargo check"
 
 build-cargo-docs:
-	# Even with dependencies documented, private items are only documented
-	# in explicitly listed packages
+	# Even with dependencies documented, private items and layout are only
+	# documented in explicitly listed packages.
+	RUSTDOCFLAGS="-Zunstable-options --show-type-layout" \
 	$(MAKE) \
 		cargo-command \
 		CARGO_COMMAND="cargo doc \
