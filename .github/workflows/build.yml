@@ -2,7 +2,6 @@ name: build
 
 on:
   push:
-    branches: ["main"]
   schedule:
     # While we don't have hooks triggering this from riot-sys etc, a cron job
     # is the next best thing
@@ -33,6 +32,7 @@ jobs:
         env:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
           SECRET_PORT: ${{ secrets.SECRET_PORT }}
+        if: github.ref == 'refs/heads/main'
         run: |
           # Beware that SSH uses /root and not ~ = ${HOME} = /github/home/ as
           # documented on https://bugzilla.mindrot.org/show_bug.cgi?id=3048
