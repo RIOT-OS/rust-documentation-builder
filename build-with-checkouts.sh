@@ -20,4 +20,11 @@ cargo update
 # target is not added the same way.
 rustup target add thumbv7em-none-eabihf
 
+# We're not running with RIOT_CI_BUILD to avoid getting *all* the effects of
+# things being different, but that also means there is an interactive prompt as
+# soon as one starts doing anything SUIT related. Can't set RIOT_CI_BUILD
+# because it'd also change the output path, so we emulate a user picking
+# 'none' whyen prompted.
+echo '0' | make -C RIOT/examples/suit_update suit/genkey
+
 make build-cargo-docs
