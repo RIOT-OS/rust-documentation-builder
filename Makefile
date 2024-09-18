@@ -30,6 +30,7 @@ USEMODULE += sock_async
 USEMODULE += core_thread_flags
 USEMODULE += vfs
 USEMODULE += prng_sha256prng
+USEMODULE += tiny_strerror
 FEATURES_REQUIRED += periph_adc
 FEATURES_REQUIRED += periph_i2c
 FEATURES_REQUIRED += periph_spi
