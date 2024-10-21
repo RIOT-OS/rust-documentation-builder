@@ -35,6 +35,7 @@ FEATURES_REQUIRED += periph_adc
 FEATURES_REQUIRED += periph_gpio
 FEATURES_REQUIRED += periph_i2c
 FEATURES_REQUIRED += periph_spi
+FEATURES_REQUIRED += periph_uart
 
 USEPKG += nimble
 
