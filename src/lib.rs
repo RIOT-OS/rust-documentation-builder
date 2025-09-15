@@ -7,7 +7,7 @@
 //! This is the entry point for the documentation of Rust functions for RIOT as built by rustdoc.
 //!
 //! For how to use Rust on RIOT in general, see the [RIOT documentation on
-//! Rust](https://doc.riot-os.org/using-rust.html).
+//! Rust](https://guide.riot-os.org/rust_tutorials/rust_in_riot/).
 //!
 //! Relevant crates are:
 //!

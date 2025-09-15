@@ -5,7 +5,7 @@
 This crate contains neither actual code or documentation, but its build infrastructure is
 suitable to produce rustdoc output for all crates in the RIOT ecosystem.
 
-See the [RIOT documentation on Rust](https://doc.riot-os.org/using-rust.html) for how to use Rust on RIOT.
+See the [RIOT documentation on Rust](https://guide.riot-os.org/rust_tutorials/rust_in_riot/) for how to use Rust on RIOT.
 That page contains pointers to all the relevant components.
 
 ## Rationale for this repository's existence
